@@ -33,4 +33,12 @@ export class HeroDetailComponent {
     this.location.back();
   }
 
+  save(): void {
+    if (this.hero) {
+      const id = Number(this.route.snapshot.paramMap.get('id'));
+      this.heroService.updateHero(this.hero, id)
+        .subscribe(() => this.goBack());
+    }
+  }
+
 }
